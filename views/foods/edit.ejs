@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Update a New Food</h1>
+
+
+      <form
+    action="/users/<%= user._id %>/foods/<%= foods._id %>?_method=PUT"
+    method="POST"
+  >
+    <label for="foodName">Food Name:</label>
+    <input
+      type="foodName"
+      name="foodName"
+      id="foodName"
+      value="<%= foods.foodName %>"
+    >
+
+    <label for="foodCategory">Food Category:</label>
+    <select id="foodCategory" name="foodCategory">
+      <option
+        value="fruits"
+        <%= foods.status === "fruits" ? "selected" : "" %>
+      >
+      Fruits
+      </option>
+      <option
+        value="vegetables"
+        <%= foods.foodCategory === "vegetables" ? "selected" : "" %>
+      >
+      Vegetables
+      </option>
+      <option
+        value="Dairy"
+        <%= foods.foodCategory === "Dairy" ? "selected" : "" %>
+      >
+      Dairy
+      </option>
+      <option
+        value="Sweets and Desserts"
+        <%= foods.foodCategory === "Sweets and Desserts" ? "selected" : "" %>
+      >
+      Sweets and Desserts
+      </option>
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" min="1" value="<%= foods.quantity %>" required />
+  
+    <button type="submit">Update Food</button>
+  </form>
+
+
+
+</body>
+</html>
+
+
